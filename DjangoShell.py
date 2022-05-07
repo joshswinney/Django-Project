@@ -6,7 +6,19 @@ django.setup()
 
 from MainApp.models import Pizza
 
-toppings = Pizza.objects.all()
+pizzas = Pizza.objects.all()
+
+for p in pizzas:
+    print(p.id, ' ', p.text)
+
+p = Pizza.objects.get(id=1)
+
+print('Pizza: ', p.text)
+#print(p.date_added)
+
+
+toppings = p.toppings_set.all()
 
 for t in toppings:
-    print(t.id, ' ', t)
+    print('Toppings: ', t.text)
+
